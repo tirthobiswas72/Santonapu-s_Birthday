@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Birthday Countdown 🎉</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 50px;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+    }
+
+    h1 {
+      font-size: 40px;
+    }
+
+    #countdown {
+      font-size: 30px;
+      margin-top: 20px;
+    }
+
+    img {
+      width: 220px;
+      margin: 10px;
+      border-radius: 15px;
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🎂 Santonapu's Birthday 🎉</h1>
+
+<!-- Photos -->
+<div>
+  <img src="photo1.jpg">
+  <img src="photo2.jpg">
+</div>
+
+<!-- Countdown -->
+<div id="countdown"></div>
+
+<!-- Message -->
+<div class="message">
+  Wishing you an amazing year ahead! 💙✨
+</div>
+
+<!-- Music -->
+<audio controls autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+var birthday = new Date("April 23, 2026 00:00:00").getTime();
+
+var x = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = birthday - now;
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+  var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+  var seconds = Math.floor((distance % (1000*60)) / 1000);
+
+  document.getElementById("countdown").innerHTML =
+    days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "🎉 Happy Birthday! 🎉";
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
